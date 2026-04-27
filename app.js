@@ -91,7 +91,8 @@ const views = {
             v2.4.0 Intelligence Suite
         </div>
 </footer>`,
-    communication: `<!-- Premium AI Voice Assistant Hero -->
+    communication: `<div class="max-w-7xl mx-auto p-4 md:p-8 py-8 space-y-8">
+<!-- Premium AI Voice Assistant Hero -->
 <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-container to-[#154212] p-8 md:p-12 shadow-xl ai-glow">
 <div class="absolute top-0 right-0 p-8 opacity-10">
 <span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
@@ -302,8 +303,10 @@ const views = {
 </div>
 </div>
 </div>
+</div>
 </div>`,
-    'crop-doctor': `<div class="max-w-5xl mx-auto">
+    'crop-doctor': `<div class=" pt-6 md:pt-12 pb-12 p-4 md:p-8 ">
+<div class="max-w-5xl mx-auto">
 <!-- Result Header -->
 <div class="mb-8">
 <h2 class="font-headline-lg text-primary mb-2">Crop Doctor Analysis</h2>
@@ -467,11 +470,13 @@ const views = {
 </div>
 </div>
 </div>
+</div>
 </div>`,
-    irrigation: `<!-- Row 1: Soil Moisture & System Status -->
-<div class="grid grid-cols-12 gap-8">
+    irrigation: `<div class="p-4 md:p-8 max-w-7xl mx-auto w-full space-y-8">
+<!-- Row 1: Soil Moisture & System Status -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 <!-- Soil Moisture Card -->
-<section class="col-span-8 bg-white rounded-xl p-8 shadow-[0_8px_24px_rgba(45,90,39,0.06)] border border-[#8B5E3C]/10 relative">
+<section class="col-span-1 lg:col-span-8 bg-white rounded-xl p-4 lg:p-8 shadow-[0_8px_24px_rgba(45,90,39,0.06)] border border-[#8B5E3C]/10 relative">
 <div class="flex justify-between items-start mb-8">
 <div>
 <h2 class="font-headline-lg text-on-surface font-bold">Soil Moisture</h2>
@@ -521,7 +526,7 @@ const views = {
 </div>
 </section>
 <!-- System Status Summary -->
-<section class="col-span-4 bg-surface-container-low rounded-xl p-6 border border-outline-variant/30 flex flex-col">
+<section class="col-span-1 lg:col-span-4 bg-surface-container-low rounded-xl p-4 lg:p-6 border border-outline-variant/30 flex flex-col">
 <div class="flex items-center gap-3 mb-6">
 <span class="material-symbols-outlined text-primary text-2xl" data-icon="dashboard_customize">dashboard_customize</span>
 <h3 class="font-label-bold text-on-surface font-bold uppercase tracking-tight">System Status Summary</h3>
@@ -543,9 +548,9 @@ const views = {
 </section>
 </div>
 <!-- Row 2: AI Recommended & Pump/Valve Stack -->
-<div class="grid grid-cols-12 gap-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
 <!-- AI Recommended Schedule -->
-<section class="col-span-8 bg-white rounded-xl p-8 shadow-[0_12px_32px_-4px_rgba(0,99,153,0.12)] border-2 border-secondary/20 relative overflow-hidden">
+<section class="col-span-1 lg:col-span-8 bg-white rounded-xl p-4 lg:p-8 shadow-[0_12px_32px_-4px_rgba(0,99,153,0.12)] border-2 border-secondary/20 relative overflow-hidden">
 <div class="absolute top-0 right-0 p-4 opacity-10">
 <span class="material-symbols-outlined text-7xl" data-icon="auto_awesome">auto_awesome</span>
 </div>
@@ -670,8 +675,10 @@ const views = {
 </div>
 </div>
 </div>
-</section>`,
-    'soil-analysis': `<!-- TopNavBar (Shared Component) -->
+</section>
+</div>`,
+    'soil-analysis': `<div class=" ">
+<!-- TopNavBar (Shared Component) -->
 
 <!-- Page Content -->
 <div class="p-8 max-w-screen-2xl mx-auto space-y-8">
@@ -903,14 +910,15 @@ const views = {
 </div>
 </div>
 </div>
+</div>
 </div>`,
     dashboard: `
-        <div class="p-8 max-w-screen-2xl mx-auto space-y-8">
+        <div class="p-4 md:p-8 max-w-screen-2xl mx-auto space-y-6 md:space-y-8">
             <div class="flex justify-between items-center">
                 <h2 class="font-headline-lg text-primary">Dashboard Overview</h2>
             </div>
             
-            <div class="bento-grid">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
                 <!-- Weather Forecast Section -->
                 <div class="col-span-12 lg:col-span-8 space-y-6">
                     <div class="bg-white rounded-xl p-lg card-shadow border border-[#8B5E3C]/15 ai-glow relative overflow-hidden">

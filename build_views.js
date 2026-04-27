@@ -22,12 +22,21 @@ function extractContent(filePath, isLogin) {
         const match = html.match(/<body[^>]*>([\s\S]*?)<\/body>/);
         return match ? match[1].trim() : '';
     } else {
-        const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/);
+        const mainMatch = html.match(/<main([^>]*)>([\s\S]*?)<\/main>/);
         if (!mainMatch) return '';
-        const mainContent = mainMatch[1];
+        let mainAttrs = mainMatch[1];
+        let mainContent = mainMatch[2];
         
-        const withoutHeader = mainContent.replace(/<header[^>]*>([\s\S]*?)<\/header>/, '');
-        return withoutHeader.trim();
+        mainContent = mainContent.replace(/<header[^>]*>([\s\S]*?)<\/header>/, '');
+        
+        // Remove layout classes that are already handled by index.html's wrapper
+        mainAttrs = mainAttrs.replace(/ml-64|lg:ml-64|min-h-screen/g, '');
+        // Make paddings responsive
+        mainAttrs = mainAttrs.replace(/p-8|px-8|px-6/g, 'p-4 md:p-8');
+        mainAttrs = mainAttrs.replace(/pt-24/g, 'pt-6 md:pt-12');
+        mainAttrs = mainAttrs.replace(/\s{2,}/g, ' ');
+        
+        return `<div${mainAttrs}>\n${mainContent.trim()}\n</div>`;
     }
 }
 
@@ -41,12 +50,12 @@ const views = {
     irrigation: \`${sanitize(views['irrigation'])}\`,
     'soil-analysis': \`${sanitize(views['soil_analysis'])}\`,
     dashboard: \`
-        <div class="p-8 max-w-screen-2xl mx-auto space-y-8">
+        <div class="p-4 md:p-8 max-w-screen-2xl mx-auto space-y-6 md:space-y-8">
             <div class="flex justify-between items-center">
                 <h2 class="font-headline-lg text-primary">Dashboard Overview</h2>
             </div>
             
-            <div class="bento-grid">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
                 <!-- Weather Forecast Section -->
                 <div class="col-span-12 lg:col-span-8 space-y-6">
                     <div class="bg-white rounded-xl p-lg card-shadow border border-[#8B5E3C]/15 ai-glow relative overflow-hidden">
