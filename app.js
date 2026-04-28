@@ -956,8 +956,9 @@ const views = {
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Right Column: News & Ads -->
+            <!-- Right Column: Crop Doctor & Sidebar Ads -->
                 <div class="col-span-12 lg:col-span-4 space-y-6">
                     <!-- Crop Doctor Summary -->
                     <div class="bg-white rounded-xl p-lg card-shadow border border-[#8B5E3C]/15">
@@ -995,6 +996,72 @@ const views = {
                         <h4 class="font-headline-md text-primary mb-2">Upgrade Your Tractor</h4>
                         <p class="font-body-md text-on-surface-variant mb-4">Discover the new John Deere 8R Series with advanced autonomous capabilities.</p>
                         <img src="https://images.unsplash.com/photo-1592982537447-6f296d0bb43c?auto=format&fit=crop&q=80&w=800" alt="Tractor Ad" class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition-transform duration-300">
+                    </div>
+                </div>
+            </div>
+
+            <!-- News & Government Schemes Section (Full Width) -->
+            <div class="bg-white rounded-xl p-lg card-shadow border border-[#8B5E3C]/15 ai-glow relative overflow-hidden mt-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-headline-md flex items-center gap-2 text-on-surface">
+                        <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">article</span>
+                        News & Gov Schemes
+                    </h3>
+                    <button class="text-secondary font-label-bold flex items-center gap-1 hover:underline text-sm">
+                        View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] rounded-full font-bold uppercase tracking-wider">Gov Scheme</span>
+                            <span class="text-caption text-on-surface-variant">Today</span>
+                        </div>
+                        <h4 class="font-label-bold text-on-surface mb-2 leading-snug group-hover:text-primary transition-colors">PM-Kisan Subsidy Application Deadline Extended</h4>
+                        <p class="text-caption text-on-surface-variant line-clamp-2">The deadline for the upcoming Rabi season fertilizer subsidy has been extended to November 15th.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] rounded-full font-bold uppercase tracking-wider">Market News</span>
+                            <span class="text-caption text-on-surface-variant">Yesterday</span>
+                        </div>
+                        <h4 class="font-label-bold text-on-surface mb-2 leading-snug group-hover:text-secondary transition-colors">Tomato Prices Expected to Rise 15% This Month</h4>
+                        <p class="text-caption text-on-surface-variant line-clamp-2">Due to unseasonal rains in key producing regions, experts predict a significant hike in wholesale tomato prices.</p>
+                    </div>
+                    <!-- Additional News Items to fill the wider space -->
+                    <div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2 py-0.5 bg-tertiary-fixed text-tertiary text-[10px] rounded-full font-bold uppercase tracking-wider">Advisory</span>
+                            <span class="text-caption text-on-surface-variant">Oct 12</span>
+                        </div>
+                        <h4 class="font-label-bold text-on-surface mb-2 leading-snug group-hover:text-tertiary transition-colors">New Guidelines for Drip Irrigation Maintenance</h4>
+                        <p class="text-caption text-on-surface-variant line-clamp-2">The Agricultural Board has released new best practices for maintaining drip systems during winter.</p>
+                    </div>
+                    <div class="p-4 rounded-lg bg-surface-container-lowest border border-outline-variant/30 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] rounded-full font-bold uppercase tracking-wider">Local Alert</span>
+                            <span class="text-caption text-on-surface-variant">Oct 10</span>
+                        </div>
+                        <h4 class="font-label-bold text-on-surface mb-2 leading-snug group-hover:text-primary transition-colors">Free Soil Testing Camp in Hertfordshire</h4>
+                        <p class="text-caption text-on-surface-variant line-clamp-2">A free soil health assessment camp will be held at the central square this coming weekend.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promotional / Ads Section (Full Width) -->
+            <div class="bg-gradient-to-r from-surface-container-low to-white rounded-xl p-lg border border-outline-variant/50 relative overflow-hidden group cursor-pointer shadow-sm mt-6 mb-6">
+                <div class="absolute top-2 right-2 text-[10px] uppercase text-outline bg-white/80 backdrop-blur-sm px-2 py-1 rounded shadow-sm z-10 font-bold tracking-widest">Sponsored</div>
+                <div class="flex flex-col sm:flex-row gap-6 items-center">
+                    <div class="w-full sm:w-64 h-32 rounded-lg overflow-hidden shrink-0 relative shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&q=80&w=600" alt="Farming Equipment Ad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-headline-md text-primary mb-2">Premium Organic Seeds - 20% Off</h4>
+                        <p class="font-body-md text-on-surface-variant mb-4 max-w-3xl">Upgrade your yield with our new drought-resistant wheat varieties. Specially engineered to thrive in low-moisture environments. Valid until end of the month.</p>
+                        <button class="px-5 py-2 bg-secondary text-white rounded-lg font-label-bold hover:bg-secondary-fixed hover:text-on-secondary-fixed transition-colors text-sm shadow-sm inline-flex items-center gap-2">
+                            Shop Now <span class="material-symbols-outlined text-sm">shopping_cart</span>
+                        </button>
                     </div>
                 </div>
             </div>
