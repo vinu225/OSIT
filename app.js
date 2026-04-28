@@ -308,9 +308,15 @@ const views = {
     'crop-doctor': `<div class=" pt-6 md:pt-12 pb-12 p-4 md:p-8 ">
 <div class="max-w-5xl mx-auto">
 <!-- Result Header -->
-<div class="mb-8">
+<div class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
 <h2 class="font-headline-lg text-primary mb-2">Crop Doctor Analysis</h2>
 <p class="text-body-md text-on-surface-variant">Real-time AI diagnosis based on field imagery from Sector 4G (Tomato Crop).</p>
+</div>
+<button id="btn-scan-crop" class="bg-primary hover:bg-primary-container text-white px-6 py-3 rounded-lg font-label-bold flex items-center justify-center gap-2 shadow-sm transition-colors shrink-0">
+<span class="material-symbols-outlined">photo_camera</span>
+Scan Crop
+</button>
 </div>
 <!-- Bento Grid Results -->
 <div class="grid grid-cols-12 gap-6 mb-8">
@@ -323,21 +329,21 @@ const views = {
 </div>
 <div>
 <p class="text-caption text-on-surface-variant uppercase tracking-wider font-bold">Disease Identified</p>
-<h3 class="font-headline-md text-on-surface">Early Blight</h3>
+<h3 id="cd-disease-name" class="font-headline-md text-on-surface">Early Blight</h3>
 </div>
 </div>
 <div class="flex flex-col items-end">
-<span class="bg-tertiary-fixed-dim text-tertiary px-4 py-1 rounded-full font-label-bold">Severity: Medium</span>
-<p class="text-caption text-on-surface-variant mt-1 italic">Action recommended within 48h</p>
+<span id="cd-severity" class="bg-tertiary-fixed-dim text-tertiary px-4 py-1 rounded-full font-label-bold">Severity: Medium</span>
+<p id="cd-action-time" class="text-caption text-on-surface-variant mt-1 italic">Action recommended within 48h</p>
 </div>
 </div>
 <div class="grid grid-cols-2 gap-4 mb-8">
 <div class="p-4 rounded-lg bg-surface-container-low border border-outline-variant/20">
 <p class="text-caption text-on-surface-variant mb-1">AI Confidence Score</p>
 <div class="flex items-end gap-2">
-<span class="text-3xl font-headline-md text-primary">94%</span>
+<span id="cd-confidence" class="text-3xl font-headline-md text-primary">94%</span>
 <div class="w-full bg-surface-container h-2 rounded-full mb-2">
-<div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
+<div id="cd-confidence-bar" class="bg-primary h-2 rounded-full" style="width: 94%"></div>
 </div>
 </div>
 </div>
@@ -362,12 +368,22 @@ const views = {
 <!-- Analysis Preview Card -->
 <div class="col-span-12 lg:col-span-4 bg-surface-container-lowest rounded-xl shadow-md overflow-hidden border border-outline-variant/15 flex flex-col">
 <div class="h-56 relative">
-<img class="w-full h-full object-cover" data-alt="close up of a tomato plant leaf with small brown spots showing signs of fungal infection and early blight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_1YHfuHDtXK7XI6PpOwCRO7UUdDGDKy0cy24Dw0_Lnn6KxfwuONE0HNrOYKA66_yVvH8Mf9v4ZS9mWmZjwCHDSR1E4yBn_AJ683urloerb8Iargka2paCE8YpGWMQHCbNhwLRZi-xvFVu_Wg_w5AOuqOo6vgejaFzjgKvQFcrEHLG2tVt5xLX9PDy7-JfxLTmcb0RgPuOWAomSbevCzfi228YOvQ5x8mWgpFBuFFxXDIpGtSihWkADAafYnit2o0nqmoxXaUv8p8"/>
+<img id="cd-main-image" class="w-full h-full object-cover" data-alt="close up of a tomato plant leaf with small brown spots showing signs of fungal infection and early blight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_1YHfuHDtXK7XI6PpOwCRO7UUdDGDKy0cy24Dw0_Lnn6KxfwuONE0HNrOYKA66_yVvH8Mf9v4ZS9mWmZjwCHDSR1E4yBn_AJ683urloerb8Iargka2paCE8YpGWMQHCbNhwLRZi-xvFVu_Wg_w5AOuqOo6vgejaFzjgKvQFcrEHLG2tVt5xLX9PDy7-JfxLTmcb0RgPuOWAomSbevCzfi228YOvQ5x8mWgpFBuFFxXDIpGtSihWkADAafYnit2o0nqmoxXaUv8p8"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-4 left-4 text-white">
-<p class="text-caption font-bold">Analysis Sample #8821</p>
-<p class="text-[10px] opacity-80">Captured 14 mins ago</p>
+<div class="absolute bottom-4 left-4 text-white w-full pr-8">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-caption font-bold" id="cd-sample-id">Analysis Sample #8821</p>
+<p class="text-[10px] opacity-80" id="cd-sample-time">Captured 14 mins ago</p>
 </div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low px-4 py-2 border-b border-outline-variant/15 flex justify-center">
+<button id="btn-scan-secondary" class="text-primary font-label-bold flex items-center gap-2 hover:bg-primary/5 px-4 py-2 rounded-lg transition-colors text-sm w-full justify-center">
+<span class="material-symbols-outlined text-sm">qr_code_scanner</span>
+Scan New Image
+</button>
 </div>
 <div class="p-6 flex-1 flex flex-col justify-between">
 <div class="space-y-3">
@@ -469,6 +485,49 @@ const views = {
 </table>
 </div>
 </div>
+</div>
+</div>
+</div>
+<!-- Camera Scanner Modal -->
+<div id="camera-modal" class="fixed inset-0 bg-black/95 z-[100] hidden flex-col items-center justify-center p-4 backdrop-blur-sm">
+<div class="absolute top-0 left-0 right-0 p-4 flex justify-between items-center z-10">
+<button id="btn-close-camera" class="p-2 rounded-full hover:bg-white/10 text-white transition-colors">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+<span class="text-white font-label-bold tracking-widest uppercase text-sm">Scanner</span>
+<div class="w-10"></div>
+</div>
+<div class="relative w-full max-w-sm aspect-[3/4] rounded-3xl overflow-hidden bg-black shadow-2xl border border-white/10">
+<video id="camera-feed" class="w-full h-full object-cover hidden" autoplay playsinline></video>
+<div id="camera-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-white/50 bg-zinc-900">
+<span class="material-symbols-outlined text-5xl mb-4 opacity-50">photo_camera</span>
+<p class="font-label-md">Initializing Camera...</p>
+</div>
+<div class="absolute top-6 left-6 w-10 h-10 border-t-4 border-l-4 border-white/70 rounded-tl-2xl"></div>
+<div class="absolute top-6 right-6 w-10 h-10 border-t-4 border-r-4 border-white/70 rounded-tr-2xl"></div>
+<div class="absolute bottom-6 left-6 w-10 h-10 border-b-4 border-l-4 border-white/70 rounded-bl-2xl"></div>
+<div class="absolute bottom-6 right-6 w-10 h-10 border-b-4 border-r-4 border-white/70 rounded-br-2xl"></div>
+<div id="scan-animation" class="absolute inset-0 hidden overflow-hidden">
+<div class="w-full h-1 bg-primary shadow-[0_0_20px_rgba(35,80,30,1)] absolute top-0 left-0 animate-[scan_2s_ease-in-out_infinite]"></div>
+<div class="absolute inset-0 bg-primary/10"></div>
+</div>
+<div id="analyzing-overlay" class="absolute inset-0 bg-black/85 hidden flex-col items-center justify-center text-white backdrop-blur-sm">
+<span class="material-symbols-outlined text-5xl animate-spin mb-4 text-primary">sync</span>
+<p class="font-label-bold text-lg">Analyzing crop condition...</p>
+<p class="text-xs opacity-70 mt-2 font-caption tracking-wider uppercase">Processing via AI Hub</p>
+</div>
+</div>
+<div class="absolute bottom-10 left-0 right-0 flex items-center justify-center gap-10 z-10">
+<label class="p-4 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer border border-white/10">
+<input type="file" accept="image/*" class="hidden" id="upload-crop-img"/>
+<span class="material-symbols-outlined text-2xl">photo_library</span>
+</label>
+<button id="btn-capture" class="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all outline-none focus:outline-none">
+<div class="w-16 h-16 rounded-full bg-white transition-transform active:scale-90"></div>
+</button>
+<button class="p-4 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors border border-white/10" id="btn-flip-camera">
+<span class="material-symbols-outlined text-2xl">flip_camera_android</span>
+</button>
 </div>
 </div>
 </div>`,
@@ -1146,4 +1205,136 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('hashchange', render);
     
     render();
+
+    // Camera Scanner Logic for Crop Doctor
+    let cameraStream = null;
+
+    document.addEventListener('click', (e) => {
+        const target = e.target.closest('#btn-scan-crop, #btn-scan-secondary');
+        if (target) {
+            openCameraModal();
+        }
+
+        const closeBtn = e.target.closest('#btn-close-camera');
+        if (closeBtn) {
+            closeCameraModal();
+        }
+
+        const captureBtn = e.target.closest('#btn-capture');
+        if (captureBtn) {
+            simulateCapture();
+        }
+
+        const flipBtn = e.target.closest('#btn-flip-camera');
+        if (flipBtn) {
+            const feed = document.getElementById('camera-feed');
+            if (feed) feed.classList.toggle('-scale-x-100');
+        }
+    });
+
+    async function openCameraModal() {
+        const modal = document.getElementById('camera-modal');
+        if (!modal) return;
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        const feed = document.getElementById('camera-feed');
+        const placeholder = document.getElementById('camera-placeholder');
+
+        try {
+            cameraStream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+            feed.srcObject = cameraStream;
+            feed.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        } catch (err) {
+            console.warn("Camera access denied or unavailable:", err);
+            // Leave placeholder visible if no camera
+        }
+    }
+
+    function closeCameraModal() {
+        const modal = document.getElementById('camera-modal');
+        if (!modal) return;
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        
+        if (cameraStream) {
+            cameraStream.getTracks().forEach(track => track.stop());
+            cameraStream = null;
+        }
+
+        // Reset state
+        document.getElementById('scan-animation')?.classList.add('hidden');
+        document.getElementById('analyzing-overlay')?.classList.add('hidden');
+        document.getElementById('analyzing-overlay')?.classList.remove('flex');
+    }
+
+    function simulateCapture() {
+        const scanAnim = document.getElementById('scan-animation');
+        const overlay = document.getElementById('analyzing-overlay');
+        
+        if (scanAnim) scanAnim.classList.remove('hidden');
+        
+        // Flash effect
+        const feed = document.getElementById('camera-feed');
+        const placeholder = document.getElementById('camera-placeholder');
+        if(feed) {
+            feed.style.opacity = '0';
+            setTimeout(() => feed.style.opacity = '1', 100);
+        } else if (placeholder) {
+            placeholder.style.opacity = '0';
+            setTimeout(() => placeholder.style.opacity = '1', 100);
+        }
+
+        setTimeout(() => {
+            if (scanAnim) scanAnim.classList.add('hidden');
+            if (overlay) {
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+            }
+
+            setTimeout(() => {
+                closeCameraModal();
+                updateCropDoctorResults();
+            }, 2500);
+        }, 1500);
+    }
+
+    function updateCropDoctorResults() {
+        // Update elements
+        const img = document.getElementById('cd-main-image');
+        // Setting a healthy crop image
+        if(img) img.src = "https://images.unsplash.com/photo-1592843997784-2a6237021eb2?auto=format&fit=crop&q=80&w=800";
+        
+        const disease = document.getElementById('cd-disease-name');
+        if(disease) {
+            disease.textContent = "Healthy Crop";
+            disease.classList.remove('text-on-surface');
+            disease.classList.add('text-primary');
+        }
+
+        const severity = document.getElementById('cd-severity');
+        if(severity) {
+            severity.textContent = "Severity: None";
+            severity.className = "bg-primary-fixed text-on-primary-fixed-variant px-4 py-1 rounded-full font-label-bold";
+        }
+
+        const actionTime = document.getElementById('cd-action-time');
+        if(actionTime) actionTime.textContent = "No immediate action required";
+
+        const confidence = document.getElementById('cd-confidence');
+        if(confidence) confidence.textContent = "98%";
+
+        const confidenceBar = document.getElementById('cd-confidence-bar');
+        if(confidenceBar) confidenceBar.style.width = "98%";
+        
+        const sampleId = document.getElementById('cd-sample-id');
+        if(sampleId) sampleId.textContent = "Analysis Sample #" + Math.floor(1000 + Math.random() * 9000);
+        
+        const sampleTime = document.getElementById('cd-sample-time');
+        if(sampleTime) sampleTime.textContent = "Captured just now";
+
+        // Scroll to top to see results
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
 });

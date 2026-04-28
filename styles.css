@@ -36,3 +36,9 @@ body {
 .main-expanded {
     margin-left: 0 !important;
 }
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
